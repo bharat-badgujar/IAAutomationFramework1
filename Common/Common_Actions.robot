@@ -63,4 +63,9 @@ Select Date From Calendar
     # Select the day
     Click Element    ${locator}//a[text()='${day}']
 
+Upload File
+    [Arguments]    ${file_input_locator}    ${file_path}    ${submit_button_locator}
+    Choose File    ${file_input_locator}    ${file_path}
+    Click Element    ${submit_button_locator}
+
 
