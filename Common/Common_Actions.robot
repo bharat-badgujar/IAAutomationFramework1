@@ -4,6 +4,7 @@ Library     SeleniumLibrary
 
 
 *** Keywords ***
+
 Launch Browser and Enter URL
     [Arguments]  ${url}     ${browser}
     Open Browser    ${url}     ${browser}
@@ -38,9 +39,28 @@ Verify Element Contains Specific Text
     [Arguments]     ${locator}  ${expected_text}
     Element Text Should Be    ${locator}   ${expected_text}
 
-Click Radio Button
-    [Arguments]  ${locator}
-    Click Element    ${locator}
+Verify Element Contains Some Text
+    [Arguments]     ${locator}  ${expected_text}
+    ${element_text}=    Get Text    ${locator}
+    Should Contain    ${element_text}   ${expected_text}
 
+Scroll Page
+    [Arguments]    ${x_coordinate}    ${y_coordinate}
+    Execute Javascript    window.scrollTo(${x_coordinate}, ${y_coordinate})
+
+Select Value from Dropdown
+    [Arguments]       ${locator}     ${value_name}
+    Select From List By Label    ${locator}    ${value_name}
+
+Select Date From Calendar
+    [Arguments]    ${locator}  ${year_locator}    ${month_locator}   ${year}    ${month}    ${day}
+    Click Element    ${locator}
+    Wait Until Element Is Visible    ${locator}    10s
+    # Select the year
+    Select From List By Value    ${year_locator}    ${year}
+    # Select the month
+    Select From List By Index    ${month_locator}    ${month}
+    # Select the day
+    Click Element    ${locator}//a[text()='${day}']
 
 
