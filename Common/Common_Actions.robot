@@ -67,5 +67,3 @@ Upload File
     [Arguments]    ${file_input_locator}    ${file_path}    ${submit_button_locator}
     Choose File    ${file_input_locator}    ${file_path}
     Click Element    ${submit_button_locator}
-
-

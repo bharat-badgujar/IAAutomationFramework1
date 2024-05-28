@@ -183,8 +183,8 @@ Deleting The Newly Created Item
     Click    ${item_name_v}
     Select Frame    ${slider_new_iFrame}
     Click    ${item_delete_btn}
-    Alert Should Be Present   Are you sure you want to delete this Item?
-    Handle Alert    ACCEPT
+    Select Frame    //div[@class="ui-widget-overlay ui-front"]
+    Click    div[@role="alertdialog"]//following::button[contains(text(),'Delete')]
 
 Searching for the Deleting Item to make sure it is deleted
     Click    ${item_search_clr}

@@ -72,7 +72,7 @@ Validate User is able to create New Item Group
 #    Validate New Item has been created
 
 Validate User is Able to Create a New Item & Search the Item
-    [Tags]    Inventory   INV_008    INV_010
+    [Tags]    Inventory   INV_008  INV_011
     Click Inventory Tab
     Click Items Tab
     Click Add New Item Button
@@ -82,7 +82,7 @@ Validate User is Able to Create a New Item & Search the Item
     Validate Details for the Newly Created Element
 
 Validate User is Able to Delete the Newly Created Item
-    [Tags]    Inventory   INV_011
+    [Tags]    Inventory   INV_010   INV_011
     Click Inventory Tab
     Click Items Tab
     Search for the Newly Created Item
