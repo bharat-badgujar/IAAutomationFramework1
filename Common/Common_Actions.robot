@@ -1,7 +1,7 @@
  # Import files
 *** Settings ***
 Library     SeleniumLibrary
-
+Library     DateTime
 
 *** Keywords ***
 
@@ -52,18 +52,20 @@ Select Value from Dropdown
     [Arguments]       ${locator}     ${value_name}
     Select From List By Label    ${locator}    ${value_name}
 
-Select Date From Calendar
-    [Arguments]    ${locator}  ${year_locator}    ${month_locator}   ${year}    ${month}    ${day}
-    Click Element    ${locator}
-    Wait Until Element Is Visible    ${locator}    10s
-    # Select the year
-    Select From List By Value    ${year_locator}    ${year}
-    # Select the month
-    Select From List By Index    ${month_locator}    ${month}
-    # Select the day
-    Click Element    ${locator}//a[text()='${day}']
-
 Upload File
     [Arguments]    ${file_input_locator}    ${file_path}    ${submit_button_locator}
     Choose File    ${file_input_locator}    ${file_path}
     Click Element    ${submit_button_locator}
+
+Add Years Months Days To Date
+    [Arguments]    ${date}    ${years}    ${months}    ${days}    ${date_format}
+#    ${date_iso}=    Convert Date    ${date}    result_format=%Y-%m-%d
+    ${date_with_years}=    Add Time To Date    ${date}    years=${years}
+    ${date_with_months}=    Add Time To Date    ${date_with_years}    months=${months}
+    ${future_date}=    Add Time To Date    ${date_with_months}    days=${days}
+    ${date_final}=    Convert Date    ${future_date}    result_format=${date_format}
+
+Upload File without Submit Button
+    [Arguments]   ${upload_btn}  ${file_path}
+    Choose File    ${upload_btn}    ${file_path}
+    Sleep    3s

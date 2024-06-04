@@ -3,9 +3,9 @@
 
 ${ImpEFT_tab}                   //a[contains(text(),'Import EFT')]
 ${ImpEFT_EFT_radio}             //*[@id="P5_CSV_UPLOAD_TYPE"]/div/div/div[1]/label
-${ImpEFT_EFTComm_radio}         //label[@for='P5_CSV_UPLOAD_TYPE_1']
-${ImpEFT_UpldFile}              //*[@id="P5_FILE_UPLOAD_DROPZONE"]/div[2]/span[1]
-${ImpEFT_UpldEFT_btn}           //*[@id="B9371585830318446"]/span[2]
+${ImpEFT_EFTComm_radio}         //*[@id="P5_CSV_UPLOAD_TYPE_1"]
+${ImpEFT_UpldFile}              //*[@id="P5_FILE_UPLOAD_input"]
+${ImpEFT_UpldEFT_btn}           //*[@id="B9371585830318446"]
 ${ImpEFT_ImportLog_btn}         //*[@id="B12265001168125539"]/span[2]
 
 ${ImpEFT_ImpLog_EFTComm}        //*[@id="P7_EFT_TYPE"]/div/div/div[2]/label
