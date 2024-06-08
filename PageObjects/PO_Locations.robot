@@ -86,7 +86,7 @@ ${notes_2}                   //*[text()="Notes"][2]
 ${contract_st_dt}            //*[@id="P4_CONTRACT_START_DATE_input"]
 ${dura_yrs}                  //*[@id="P4_DURATION_YEARS"]
 ${dura_mths}                 //*[@id="P4_DURATION_MONTHS"]
-${contract_end_dt}           //*[@id="P4_CONTRACT_END_DATE"]
+${contract_end_dt}           //input[@id="P4_CONTRACT_END_DATE" and @class="text_field apex-item-text"]
 ${not_prd_days}              //*[@id="P4_NOTICE_PERIOD"]
 
 ${auto_renewal_tg}           //*[@id="P4_AUTO_RENEWAL_CONTAINER"]/div[2]/div[2]/span/span
@@ -98,3 +98,8 @@ ${uploaded_file}             //*[@id="contractAttachments_ig_grid_vc"]/div[3]/di
 ${view}                      //*[@id="contractAttachments_ig_grid_vc_cur"]
 
 ${upload_delete}             //*[@id="contractAttachments_ig_grid_vc_cur"]/a
+
+${new_notes}                 //*[@id="B22081001092130534"]
+${notes_desc}                //*[@id="P4_NOTE_DESC"]
+${note_save_btn}             //*[@id="B22082482156130548"]/span
+${note_header}               //*[@id="noteHeader"]

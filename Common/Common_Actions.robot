@@ -2,6 +2,10 @@
 *** Settings ***
 Library     SeleniumLibrary
 Library     DateTime
+Library     Process
+Library     BuiltIn
+Library    OperatingSystem
+Library    String
 
 *** Keywords ***
 
@@ -57,13 +61,27 @@ Upload File
     Choose File    ${file_input_locator}    ${file_path}
     Click Element    ${submit_button_locator}
 
-Add Years Months Days To Date
-    [Arguments]    ${date}    ${years}    ${months}    ${days}    ${date_format}
-#    ${date_iso}=    Convert Date    ${date}    result_format=%Y-%m-%d
-    ${date_with_years}=    Add Time To Date    ${date}    years=${years}
-    ${date_with_months}=    Add Time To Date    ${date_with_years}    months=${months}
-    ${future_date}=    Add Time To Date    ${date_with_months}    days=${days}
-    ${date_final}=    Convert Date    ${future_date}    result_format=${date_format}
+Subtract 12 from a Resultant Months
+    [Arguments]    ${number}
+    ${result}=    Evaluate    ${number} - 12
+    RETURN  ${result}
+
+Calculate Final Date
+    [Arguments]    ${start_date}    ${year}   ${month}
+    ${date_as_string}=   Convert To String    ${start_date}
+    ${current_year}=    Evaluate    datetime.datetime.strptime('${start_date}', '%Y-%m-%d').year
+    ${fyear_calc}=  Evaluate    ${current_year} + ${year}
+    ${current_month}=    Evaluate    datetime.datetime.strptime('${start_date}', '%Y-%m-%d').month
+    ${resultant_month}=  Evaluate    ${current_month} + ${month}
+    ${final_month}=  Run Keyword If    ${resultant_month}>12    Subtract 12 from a Resultant Months  ${resultant_month}
+    ${final_year}=  Run Keyword If    ${resultant_month}>12    Evaluate    ${fyear_calc}+1  ELSE    Set Variable    ${fyear_calc}
+    ${current_day}=    Evaluate    datetime.datetime.strptime('${start_date}', '%Y-%m-%d').day
+    ${final_day}=   Evaluate    ${current_day}-1
+    ${formatted_month}=    Run Keyword If    ${final_month} < 10    Format String    0${final_month}    ELSE    Set Variable    ${final_month}
+    ${formatted_day}=    Run Keyword If    ${final_day} < 10    Format String    0${final_day}    ELSE    Set Variable    ${final_day}
+    ${date_string}=  Catenate    SEPARATOR=/    ${formatted_month}    ${formatted_day}     ${final_year}
+    Log    The final date is ${date_string}
+    RETURN  ${date_string}
 
 Upload File without Submit Button
     [Arguments]   ${upload_btn}  ${file_path}

@@ -8,9 +8,10 @@ Resource    ../Common/Common_Actions.robot
 ${Page_Name}             Locations
 ${google_map_url}        google.com/maps
 ${years}                 2
-${months}                3
+${months}                7
 ${days}                  15
 ${date_format}           %m/%d/%Y
+${conversion_format}     %Y-%m-%d
 ${file_path}             C:/Users/BHARAT/Downloads/contract-signature-.jpg
 ${cont_upload}           .amazonaws.com
 
@@ -171,15 +172,16 @@ Verify the Headers present for Contract Info Tab
 Input Contract Start Date, Years and Months and Check Contract End Date
     ${current_date} =    Get Current Date
     Log  The current date is ${current_date}
+    ${conversion_date}=  Convert Date    ${current_date}   result_format=${conversion_format}
     ${start_date}=    Convert Date    ${current_date}   result_format=${date_format}
     Input Text in Textbox    ${contract_st_dt}    ${start_date}
     Select Value from Dropdown    ${dura_yrs}    ${years}
     Select Value from Dropdown    ${dura_mths}     ${months}
     Input Text in Textbox    ${not_prd_days}    ${days}
-#    ${end_date}=    Add Years Months Days To Date    ${current_date}    ${years_to_add}    ${months_to_add}    ${days_to_add}    ${date_format}
-#    Log    The Final Dats is ${end_date}
-#    ${end_date}=    Add Time To Date    ${current_date}    15 days
-#    ${end1_date}=    Convert Date    ${end_date}   result_format=${date_format}
+    ${end_date}=    Calculate Final Date    ${conversion_date}   ${years}    ${months}
+    Sleep    5s
+    ${cont_end_date}=   Get Value    ${contract_end_dt}
+    Should Be Equal    ${end_date}    ${cont_end_date}
     Click    ${auto_renewal_tg}
     Validate Page Contains Element    ${auto_renewal_yr}
     Validate Page Contains Element    ${auto_renewal_mt}
@@ -203,4 +205,11 @@ Click on View Icon and Verify that Document is loaded in different tab
     
 Delete The Uploaded Document
     Click    ${upload_delete}
+
+Click on the Notes Field and Add Notes
+    Click    ${new_notes}
+#    Input Text in Textbox    ${notes_desc}    Automation Testing
+    Click    ${note_save_btn}
+    ${notes_values}=  Get Text    ${note_header}
+    Should Be Equal  ${notes_values}    Automation Testing
 
