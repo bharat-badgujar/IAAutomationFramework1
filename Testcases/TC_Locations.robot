@@ -151,3 +151,4 @@ Verify that User should be able to add the notes
     Search for the Active Location name
     Click on the active location name and Verify page is loaded for that location
     Click on Contract Info Tab
+    Click on the Notes Field and Add Notes
