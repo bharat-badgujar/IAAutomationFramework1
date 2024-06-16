@@ -152,3 +152,72 @@ Verify that User should be able to add the notes
     Click on the active location name and Verify page is loaded for that location
     Click on Contract Info Tab
     Click on the Notes Field and Add Notes
+
+Verify that User should be able to make the status as Active/Inactive
+    [Tags]   Locations  LOC_021
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on Contract Info Tab
+    Get The Color of the Header
+#    Change Status of the Location and Save Changes
+#    Get The Color of the Header
+
+Verify that User should be able to view the Service Info details
+    [Tags]   Locations  LOC_024
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on Service Info Tab
+    Verify the Headers present for Service Info Tab
+
+
+Verify that User should be able to view the service log details of the location from Service Info
+    [Tags]   Locations   LOC_025
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on Service Info Tab
+    Click on the First Work Order Link and Verify Service Call Detail Page is Loaded
+
+
+Verify that User should be able to create new contact details
+    [Tags]   Locations  LOC_026
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the Contact Details Page
+    Click on New and Fill in the New Contact Details and Create
+
+Verify that User should be able to view contact details
+    [Tags]   Locations  LOC_027
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the Contact Details Page
+    Validate Newly Created Contact Details is Present on the Page
+
+Verify that User should be able to set the contact as primary
+    [Tags]   Locations  LOC_029
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the Contact Details Page
+    Click Set as Primary for the Contact Detail and Save
+    Verify Contact is Set as Primary
+
+Verify that User shoud be able to Upload the License & videos
+    [Tags]   Locations  LOC_033  LOC_034
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the License & Videos Button
+    Upload The License & Video Document and Check the Upload is Successful
+

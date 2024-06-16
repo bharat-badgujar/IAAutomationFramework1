@@ -14,6 +14,10 @@ ${date_format}           %m/%d/%Y
 ${conversion_format}     %Y-%m-%d
 ${file_path}             C:/Users/BHARAT/Downloads/contract-signature-.jpg
 ${cont_upload}           .amazonaws.com
+${new_cont_name}         Manish
+${new_cont_mail}         petrollc@gmail.com
+${new_cont_ph}           7678987898
+${file_name}             contract-signature-.jpg
 
 *** Keywords ***
 
@@ -192,8 +196,8 @@ Verify that Active Coams Field is Non Editable
     ${is_non_editable}=    Run Keyword And Return Status    Should Be True    ${readonly} or ${disabled}
 
 Upload The Contract Document and Check the Upload is Successful
-    Upload File without Submit Button  ${upload_btn}    ${file_path}
-    Should Be Empty    ${uploaded_file}
+    Upload File without Submit Button  ${upload_btn}    ${file_path}    ${file_type}    CONTRACT_INFO
+    Page Should Contain Element    ${uploaded_file}
 
 Click on View Icon and Verify that Document is loaded in different tab
     ${original_windows}=    Get Window Handles
@@ -212,4 +216,64 @@ Click on the Notes Field and Add Notes
     Click    ${note_save_btn}
     ${notes_values}=  Get Text    ${note_header}
     Should Be Equal  ${notes_values}    Automation Testing
+    
+Change Status of the Location and Save Changes
+    Click    ${status_toggle}
+    Click    ${save_changes_btn}
+    
+Get The Color of the Header
+    Get Element Color    ${inactive_header}
 
+Click on Service Info Tab
+    Wait Until Element Is Visible    ${service_info}
+    Click    ${service_info}
+
+Verify the Headers present for Service Info Tab
+    Verify Element Contains Specific Text    ${work_order_#}    WO#
+    Verify Element Contains Specific Text    ${service_call_type}    Service Call Type
+    Verify Element Contains Specific Text    ${reason}    Reason
+    Verify Element Contains Specific Text    ${status_svc_info}    Status
+    Verify Element Contains Specific Text    ${priority}    Priority
+    Verify Element Contains Specific Text    ${created_by}    Created By
+    Verify Element Contains Specific Text    ${created_date}    Created Date
+
+Click on the First Work Order Link and Verify Service Call Detail Page is Loaded
+    Click    ${first_WO#}
+    Validate Title of the Page    Service Call Detail
+    
+Click on the Contact Details Page
+    Wait Until Element Is Visible    ${contact_details}
+    Click    ${contact_details}
+
+Click on New and Fill in the New Contact Details and Create
+    Click    ${add_new_contact}
+    Select Frame    ${slider_frame_cont}
+    Input Text in Textbox    ${contact_name}     ${new_cont_name}
+    Input Text in Textbox    ${contact_email}    ${new_cont_mail}
+    Input Text in Textbox    ${contact_phone}    ${new_cont_ph}
+    Click    ${create_contact}
+
+Validate Newly Created Contact Details is Present on the Page
+    Page Should Contain Element    //a[text()="${new_cont_name}"]
+    Page Should Contain Element    //*[text()="${new_cont_mail}"]
+    Page Should Contain Element    //*[text()="${new_cont_ph}"]
+    
+Click Set as Primary for the Contact Detail and Save
+    Click    //a[text()="${new_cont_name}"]
+    Select Frame    ${slider_frame_cont}
+    Click    ${set_primary}
+    Click    ${save_contact}
+    
+Verify Contact is Set as Primary
+    Sleep    3s
+    Refresh The Page
+    Verify Element Contains Specific Text    ${primary_cont_name}    ${new_cont_name}
+    Verify Element Contains Specific Text    ${primary_cont_ph}    ${new_cont_ph}
+
+Click on the License & Videos Button
+    Wait Until Element Is Visible    ${license_&_videos}
+    Click    ${license_&_videos}
+
+Upload The License & Video Document and Check the Upload is Successful
+    Upload File without Submit Button  ${upload_btn}    ${file_path}    ${file_type}    LICENSE_VIDEOS
+    Page Should Contain Element    //*[text()="${file_name}"]

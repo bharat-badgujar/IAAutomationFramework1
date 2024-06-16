@@ -96,4 +96,6 @@ ${adjustment_vendor}              //*[@id="ig_items_ig_grid_vc_cur"]
 ${item_search_box}                //*[@id="ig_items_ig_grid_vc_cur"]
 ${item_search_po}                 //*[@id="PopupLov_29_C22219820356129326_dlg"]/div[1]/input
 
+${delete_conf}                    //*[@id="t_PageBody"]/div[15]/div[3]/div/button[2]
+
 

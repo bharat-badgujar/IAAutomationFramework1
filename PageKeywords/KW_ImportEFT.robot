@@ -5,7 +5,7 @@ Resource    ../PageObjects/PO_ImportEFT.robot
 Resource    ../Common/Common_Actions.robot
 
 *** Variables ***
-${ImpEFT_EFTfile}     "C:\Users\jayam\TSG Dropbox\JAYAMEDHA OFFICE\officework5512@gmail.com’s files\OneDrive\Desktop\GMM-DBJan01toFeb04.csv"
+${ImpEFT_EFTfile}     C:/Users/BHARAT/Downloads/GMM- DB Jan 01 2024 to Feb 04 2024 one loc.csv
 #{ImpEFT_EFTCommFile}
 
 *** Keywords ***
@@ -48,10 +48,16 @@ Click on EFT Commission Download Link
      Click  ${ImpEFT_ImpLog_EFTCommDwnld}
 Click on the Choose File
     Click    ${ImpEFT_UpldFile}
+    
 Click on Upload the File
     Choose File    ${ImpEFT_UpldFile}    ${ImpEFT_EFTfile}
     #Wait Until Element Is Visible    locator ${CURDIR}${/}
 Click on EFT Commission Radio Button in Import EFT
-     Click Radio Button  ${ImpEFT_EFTComm_radio}
-Click on Upload the EFT button
-    Click    ${ImpEFT_UpldEFT_btn}
+     Click  ${ImpEFT_EFTComm_radio}
+
+Upload The File
+    Upload File    ${ImpEFT_UpldFile}    ${ImpEFT_EFTfile}    ${ImpEFT_UpldEFT_btn}
+
+
+
+

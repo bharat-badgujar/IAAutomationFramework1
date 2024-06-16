@@ -6,6 +6,7 @@ Library     Process
 Library     BuiltIn
 Library    OperatingSystem
 Library    String
+Library    XML
 
 *** Keywords ***
 
@@ -84,6 +85,15 @@ Calculate Final Date
     RETURN  ${date_string}
 
 Upload File without Submit Button
-    [Arguments]   ${upload_btn}  ${file_path}
+    [Arguments]   ${upload_btn}  ${file_path}    ${file_type}   ${value}
+    Execute JavaScript          apex.item("${file_type}").setValue('${value}');
     Choose File    ${upload_btn}    ${file_path}
-    Sleep    3s
+
+Get Element Color
+    [Arguments]    ${locator}
+    ${color}=    Execute JavaScript    return window.getComputedStyle(document.querySelector('${locator}')).color;
+    [Return]    ${color}
+
+Refresh The Page
+    Execute JavaScript    location.reload()
+    Log    Page refreshed

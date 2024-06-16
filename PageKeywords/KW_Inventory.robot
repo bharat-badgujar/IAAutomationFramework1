@@ -176,21 +176,22 @@ Validate Details for the Newly Created Element
     Verify Element Contains Specific Text    ${item_grp_name_v}    ${new_group_name}
     Verify Element Contains Specific Text    ${item_name_v}    ${new_group_name}
     Verify Element Contains Specific Text    ${item_desc_v}    ${new_group_desc}
-    Sleep    5s
     Log    ${new_group_name} details are correct!
 
 Deleting The Newly Created Item
     Click    ${item_name_v}
     Select Frame    ${slider_new_iFrame}
     Click    ${item_delete_btn}
-    Select Frame    //div[@class="ui-widget-overlay ui-front"]
-    Click    div[@role="alertdialog"]//following::button[contains(text(),'Delete')]
+    Unselect Frame
+    Click  ${delete_conf}
+
 
 Searching for the Deleting Item to make sure it is deleted
     Click    ${item_search_clr}
     Input Text in Textbox    ${item_search_bar}    ${new_group_name}
     Click    ${item_search_go}
-    Verify Element Contains Specific Text    ${item_no_match}    No data found
+    ${result_text}=  Get Text    ${item_no_match}
+    Should Be Equal    ${item_no_match}    No data found
     Log    ${new_group_name} has been deleted!
 
 Click Finished Goods Tab
@@ -217,7 +218,7 @@ Search for Newly Created Finished Group
     Input Text in Textbox    ${fg_search_bar}    SKYRISER AUTO
     Press Keys  ${fg_search_bar}    ENTER
     Click    ${fg_search_go}
-#    Verify Element Contains Specific Text    ${fg_srch_name}     SKYRISER AUTO
+    Verify Element Contains Specific Text    ${fg_srch_name}     SKYRISER AUTO
     Verify Element Contains Specific Text    ${fg_srch_Sno}    227690
     Verify Element Contains Specific Text    ${fg_srch_manuf}    BANILLA
     Log    SKYRISER AUTO finished good is created successfully!
@@ -241,7 +242,6 @@ Click Add Adjustment Button
 
 Select the Adjustment Date
     Click    ${adjustment_date}
-#    Select Date From Calendar   ${adjustment_calendar}  ${adjustment_year}  ${adjustment_month}     2023    4   16
     Input Text in Textbox    ${adjustment_date}     05/06/2023
 
 Enter Reason & Description for Inventory Adjustment

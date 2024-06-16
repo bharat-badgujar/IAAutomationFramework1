@@ -93,9 +93,11 @@ ${auto_renewal_tg}           //*[@id="P4_AUTO_RENEWAL_CONTAINER"]/div[2]/div[2]/
 ${auto_renewal_yr}           //*[@id="P4_AUTO_RENEWAL_YEARS"]
 ${auto_renewal_mt}           //*[@id="P4_AUTO_RENEWAL_MONTHS"]
 ${active_coams}              //*[@id="P4_NO_OF_COAMS"]
-${upload_btn}                //*[@id="B17618140405408448"]
-${uploaded_file}             //*[@id="contractAttachments_ig_grid_vc"]/div[3]/div[1]/div[1]
-${view}                      //*[@id="contractAttachments_ig_grid_vc_cur"]
+${upload_btn}                //*[@id="P4_FILE_UPLOAD_input"]
+${uploaded_file}             //*[@id="contractAttachments_ig_grid_vc_cur"]
+${view}                      //*[@id="contractAttachments_ig_grid_vc_cur"]/a/i[1]
+${file_type}                 P4_FILE_TYPE
+${status_toggle}             //*[@id="P4_STATUS_CONTAINER"]/div[2]/div[2]/span/span
 
 ${upload_delete}             //*[@id="contractAttachments_ig_grid_vc_cur"]/a
 
@@ -103,3 +105,33 @@ ${new_notes}                 //*[@id="B22081001092130534"]
 ${notes_desc}                //*[@id="P4_NOTE_DESC"]
 ${note_save_btn}             //*[@id="B22082482156130548"]/span
 ${note_header}               //*[@id="noteHeader"]
+
+${inactive_header}           P4_DUE_IN_DISPLAY
+
+${work_order_#}              //*[@id="C22887736418815118_HDR"]
+${service_call_type}         //*[@id="C15411309335780727_HDR"]
+${reason}                    //*[@id="C22887839296815119_HDR"]
+${status_svc_info}           //*[@id="C22887249557815113_HDR"]
+${priority}                  //*[@id="C22887983892815120_HDR"]
+${created_by}                //*[@id="C22887576279815116_HDR"]
+${created_date}              //*[@id="C22887630221815117_HDR"]
+
+${first_WO#}                 //*[@id="R17483511222899741_ig_grid_vc_cur"]/a
+
+${slider_frame_cont}         //*[@id="apex_dialog_1"]/iframe
+${add_new_contact}           //*[@id="addContact"]/span[2]
+${contact_name}              //*[@id="P30_NAME"]
+${contact_email}             //*[@id="P30_EMAIL"]
+${contact_phone}             //*[@id="P30_PHONE"]
+${create_contact}            //*[@id="B22658628509654958"]/span
+${set_primary}               //*[text()="Set Primary"]/preceding::input[1]
+${send_eft_msg}              //*[text()="Send EFT Message"]/preceding::input[1]
+${provide_app_access}        //*[text()="Provide Application Access"]/preceding::input[1]
+${save_contact}              //*[@id="B22659477194654959"]/span
+${primary_cont_name}         //*[@id="locationInfo-contact"]/span
+${primary_cont_ph}           //*[@id="locationInfo-contactNo"]/span
+
+${lic_vid_doc}               //*[@id="R11975126729610840_ig_grid_vc_cur"]
+
+
+
