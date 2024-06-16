@@ -265,10 +265,23 @@ Click Set as Primary for the Contact Detail and Save
     Click    ${save_contact}
     
 Verify Contact is Set as Primary
-    Sleep    3s
     Refresh The Page
     Verify Element Contains Specific Text    ${primary_cont_name}    ${new_cont_name}
     Verify Element Contains Specific Text    ${primary_cont_ph}    ${new_cont_ph}
+
+Click Send EFT Message for the Contact Detail and Save
+    Click    //a[text()="${new_cont_name}"]
+    Select Frame    ${slider_frame_cont}
+    Click    ${send_eft_msg}
+    Click    ${save_contact}
+
+Click Provide Application Access and Provide Temp Password for the Contact Detail and Save
+    Click    //a[text()="${new_cont_name}"]
+    Select Frame    ${slider_frame_cont}
+    Click    ${provide_app_access}
+    Input Text in Textbox    ${contact_pwd}    Test$1234
+    Click    ${save_contact}
+    
 
 Click on the License & Videos Button
     Wait Until Element Is Visible    ${license_&_videos}
@@ -277,3 +290,33 @@ Click on the License & Videos Button
 Upload The License & Video Document and Check the Upload is Successful
     Upload File without Submit Button  ${upload_btn}    ${file_path}    ${file_type}    LICENSE_VIDEOS
     Page Should Contain Element    //*[text()="${file_name}"]
+
+Click on View Icon and Verify that License/Video is loaded in different tab
+    ${original_windows}=    Get Window Handles
+    Click    //*[text()="${file_name}"]//following::a[text()="View"][1]
+    Sleep    5s
+    ${new_window}=    Switch Window    ${original_windows}
+    ${current_url}=    Get Location
+    Should Contain    ${current_url}    ${cont_upload}
+
+Delete the Uploaded License/Video
+    Click    //*[text()="${file_name}"]//following::a[3]
+
+Click on the Inspection Info Tab
+    Wait Until Element Is Visible    ${inspection_info}
+    Click    ${inspection_info}
+    Sleep    3s
+
+Validate headers for the Inspection Info Tab
+    Verify Element Contains Specific Text    ${ii_in#}     IN#
+    Verify Element Contains Specific Text    ${ii_reason}    Reason
+    Verify Element Contains Specific Text    ${ii_status}    Status
+    Verify Element Contains Specific Text    ${ii_priority}    Priority
+    Verify Element Contains Specific Text    ${ii_created_by}    Created By
+    Verify Element Contains Specific Text    ${ii_created_date}    Created Date
+    Verify Element Contains Specific Text    ${ii_done_by}    Done By
+    Verify Element Contains Specific Text    ${ii_done_on}    Done On
+
+Click on the First Inspection Infor Link and Verify Inspection Detail Page is Loaded
+    Click    ${first_IN#}
+    Validate Title of the Page    Inspection Detail

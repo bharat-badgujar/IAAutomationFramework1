@@ -55,11 +55,11 @@ ${active_loc}                //*[contains(text(),'DUMMY')][1]
 ${map_icon}                  //*[@id="locationInfo-map"]/a/img
 
 ${machine_info}              //*[@id="machine_info_head_tab"]/a/span
-${contract_info}             //*[@id="SAVE_DRAFT_tab"]/a/span
-${service_info}              //*[@id="R17483511222899741_tab"]/a/span
-${contact_details}           //*[@id="R22078236038130506_tab"]/a/span
-${license_&_videos}          //*[@id="R11975007380610839_tab"]/a/span
-${inspection_info}           //*[@id="R18697561372750032_tab"]/a/span
+${contract_info}             //*[text()="Contract Info"]
+${service_info}              //*[text()="Service Info"]
+${contact_details}           //*[text()="Contact Details"]
+${license_&_videos}          //*[text()="License & Videos"]
+${inspection_info}           //*[text()="Inspection Info"]
 
 ${machine_num}               //*[@id="C14744459284630346_HDR"]
 ${fg_name_hdr}               //*[@id="C13285814375690646_HDR"]
@@ -128,10 +128,25 @@ ${set_primary}               //*[text()="Set Primary"]/preceding::input[1]
 ${send_eft_msg}              //*[text()="Send EFT Message"]/preceding::input[1]
 ${provide_app_access}        //*[text()="Provide Application Access"]/preceding::input[1]
 ${save_contact}              //*[@id="B22659477194654959"]/span
+${contact_pwd}               //*[@id="P30_PASSWORD"]
+
 ${primary_cont_name}         //*[@id="locationInfo-contact"]/span
 ${primary_cont_ph}           //*[@id="locationInfo-contactNo"]/span
 
+
 ${lic_vid_doc}               //*[@id="R11975126729610840_ig_grid_vc_cur"]
+
+${ii_in#}                    //*[@id="C18697728455750034_HDR"]
+${ii_reason}                 //*[@id="C18697943690750036_HDR"]
+${ii_status}                 //*[@id="C18698093312750037_HDR"]
+${ii_priority}               //*[@id="C18698124654750038_HDR"]
+${ii_created_by}             //*[@id="C18698222416750039_HDR"]
+${ii_created_date}           //*[@id="C18698351384750040_HDR"]
+${ii_done_by}                //*[@id="C8987293354249742_HDR"]
+${ii_done_on}                //*[@id="C8987330965249743_HDR"]
+
+${first_IN#}                 //*[@id="R18697561372750032_ig_grid_vc_cur"]/a
+
 
 
 

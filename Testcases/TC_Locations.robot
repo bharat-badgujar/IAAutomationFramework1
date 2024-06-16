@@ -212,6 +212,24 @@ Verify that User should be able to set the contact as primary
     Click Set as Primary for the Contact Detail and Save
     Verify Contact is Set as Primary
 
+Verify that User should be able to set the contact to receive EFT msg
+    [Tags]   Locations  LOC_030
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the Contact Details Page
+    Click Send EFT Message for the Contact Detail and Save
+
+Verify that User should be able to provide the application access to the location
+    [Tags]   Locations  LOC_031
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the Contact Details Page
+    Click Provide Application Access and Provide Temp Password for the Contact Detail and Save
+
 Verify that User shoud be able to Upload the License & videos
     [Tags]   Locations  LOC_033  LOC_034
     Click Locations and Navigate
@@ -221,3 +239,38 @@ Verify that User shoud be able to Upload the License & videos
     Click on the License & Videos Button
     Upload The License & Video Document and Check the Upload is Successful
 
+Verify that User should be able to download and view the License / videos
+    [Tags]   Locations  LOC_035
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the License & Videos Button
+    Click on View Icon and Verify that License/Video is loaded in different tab
+
+Verify that User should be able to delete the License / videos
+    [Tags]   Locations  LOC_036
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the License & Videos Button
+    Delete the Uploaded License/Video
+
+Verify that User should be able to view the Inspection Info
+    [Tags]   Locations  LOC_037
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the Inspection Info Tab
+    Validate headers for the Inspection Info Tab
+
+Verify that User should be able to view the Inspection details
+    [Tags]   Locations  LOC_038
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on the Inspection Info Tab
+    Click on the First Inspection Infor Link and Verify Inspection Detail Page is Loaded
