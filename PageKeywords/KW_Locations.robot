@@ -190,6 +190,11 @@ Input Contract Start Date, Years and Months and Check Contract End Date
     Validate Page Contains Element    ${auto_renewal_yr}
     Validate Page Contains Element    ${auto_renewal_mt}
 
+Select the Contract End Date Less than a Year
+   Wait Until Element Is Visible    ${dura_mths}
+    Select Value from Dropdown    ${dura_mths}    4
+    Sleep    3s
+
 Verify that Active Coams Field is Non Editable
     ${readonly}=    Get Element Attribute    ${active_coams}     readonly
     ${disabled}=    Get Element Attribute    ${active_coams}     disabled
@@ -219,10 +224,18 @@ Click on the Notes Field and Add Notes
     
 Change Status of the Location and Save Changes
     Click    ${status_toggle}
-    Click    ${save_changes_btn}
-    
-Get The Color of the Header
-    Get Element Color    ${inactive_header}
+    Click Button    ${save_changes_btn}
+    Sleep    5s
+
+Click the Save Changes Button for Contract Info
+    Click Button    ${save_changes_btn}
+    Sleep    5s
+
+Check if the Location is Inactive
+        Check if Location is Inactive    ${loca_hdr}
+
+Check if the Location is Due in Less than 6 months
+    Check if Location is Due in Few Months    ${loca_hdr}
 
 Click on Service Info Tab
     Wait Until Element Is Visible    ${service_info}
@@ -265,7 +278,6 @@ Click Set as Primary for the Contact Detail and Save
     Click    ${save_contact}
     
 Verify Contact is Set as Primary
-    Refresh The Page
     Verify Element Contains Specific Text    ${primary_cont_name}    ${new_cont_name}
     Verify Element Contains Specific Text    ${primary_cont_ph}    ${new_cont_ph}
 

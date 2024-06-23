@@ -101,7 +101,7 @@ Validate User is able to search for the newly created Finished Good and delete i
     [Tags]      Inventory    INV_015    INV_016
     Click Inventory Tab
     Click Finished Goods Tab
-    Search for Newly Created Finished Group
+    Search for Newly Created Finished Group     SKYRISER AUTO    227690       BANILLA     DUMMY
 
 Validate User is able to access Inventory Adjustment Page
     [Tags]      Inventory    INV_017

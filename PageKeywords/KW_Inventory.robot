@@ -215,13 +215,16 @@ Enter Finished Good Details
     Sleep    3s
 
 Search for Newly Created Finished Group
-    Input Text in Textbox    ${fg_search_bar}    SKYRISER AUTO
+    [Arguments]     ${search_item}    ${serial_no}   ${manufacturer_name}   ${location_name}
+    Input Text in Textbox    ${fg_search_bar}    ${search_item}
     Press Keys  ${fg_search_bar}    ENTER
     Click    ${fg_search_go}
-    Verify Element Contains Specific Text    ${fg_srch_name}     SKYRISER AUTO
-    Verify Element Contains Specific Text    ${fg_srch_Sno}    227690
-    Verify Element Contains Specific Text    ${fg_srch_manuf}    BANILLA
-    Log    SKYRISER AUTO finished good is created successfully!
+    Sleep    5s
+    Verify Element Contains Specific Text    ${fg_srch_name}    ${search_item}
+    Verify Element Contains Specific Text    ${fg_srch_Sno}    ${serial_no}
+    Verify Element Contains Specific Text    ${fg_srch_manuf}    ${manufacturer_name}
+    Verify Element Contains Specific Text    ${fg_srch_location}    ${location_name}
+    Log    ${search_item} finished good is created successfully!
 
 Click Inventory Adjustment Tab
     Click    ${inventory_adjustment}

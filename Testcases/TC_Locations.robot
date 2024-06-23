@@ -153,16 +153,26 @@ Verify that User should be able to add the notes
     Click on Contract Info Tab
     Click on the Notes Field and Add Notes
 
-Verify that User should be able to make the status as Active/Inactive
+Verify that User should be able to make the status as Inactive
     [Tags]   Locations  LOC_021
     Click Locations and Navigate
     Validate Locations Page is loaded correctly
     Search for the Active Location name
     Click on the active location name and Verify page is loaded for that location
     Click on Contract Info Tab
-    Get The Color of the Header
-#    Change Status of the Location and Save Changes
-#    Get The Color of the Header
+    Change Status of the Location and Save Changes
+    Check if the Location is Inactive
+
+Verify that Color changes when the Contract End date is less than 12 months
+    [Tags]   Locations  LOC_022
+    Click Locations and Navigate
+    Validate Locations Page is loaded correctly
+    Search for the Active Location name
+    Click on the active location name and Verify page is loaded for that location
+    Click on Contract Info Tab
+    Select the Contract End Date Less than a Year
+    Click the Save Changes Button for Contract Info
+    Check if the Location is Due in Less than 6 months
 
 Verify that User should be able to view the Service Info details
     [Tags]   Locations  LOC_024

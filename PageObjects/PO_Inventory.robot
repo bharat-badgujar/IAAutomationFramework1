@@ -78,9 +78,10 @@ ${fg_finished_cb}                 //*[@id="P53_FINISHED_Y_N"]
 ${fg_create}                      //*[@id="B11974396553610832"]
 ${fg_search_bar}                  //*[@id="ig_items_ig_toolbar_static_search"]
 ${fg_search_go}                   //*[@id="ig_items_ig_toolbar_static_search"]/span
-${fg_srch_name}                   //*[@id="ig_items_ig_grid_vc_cur"]/a
+${fg_srch_name}                   //*[@id="ig_items_ig_grid_vc"]/div[3]/div[3]/table/tbody/tr/td[2]
 ${fg_srch_Sno}                    //*[@id="ig_items_ig_grid_vc"]/div[3]/div[3]/table/tbody/tr/td[3]
 ${fg_srch_manuf}                  //*[@id="ig_items_ig_grid_vc"]/div[3]/div[3]/table/tbody/tr/td[5]
+${fg_srch_location}               //*[@id="ig_items_ig_grid_vc"]/div[3]/div[3]/table/tbody/tr/td[8]
 
 ${inventory_adjsmnt_dt}           //*[@id="C22219184633129319_HDR"]
 ${inventory_adjsmnt_rsn}          //*[@id="C22219255506129320_HDR"]

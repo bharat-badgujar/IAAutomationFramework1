@@ -62,6 +62,10 @@ Upload File
     Choose File    ${file_input_locator}    ${file_path}
     Click Element    ${submit_button_locator}
 
+Upload File 2
+    [Arguments]    ${file_input_locator}    ${file_path}
+    Choose File    ${file_input_locator}    ${file_path}
+
 Subtract 12 from a Resultant Months
     [Arguments]    ${number}
     ${result}=    Evaluate    ${number} - 12
@@ -89,11 +93,38 @@ Upload File without Submit Button
     Execute JavaScript          apex.item("${file_type}").setValue('${value}');
     Choose File    ${upload_btn}    ${file_path}
 
-Get Element Color
-    [Arguments]    ${locator}
-    ${color}=    Execute JavaScript    return window.getComputedStyle(document.querySelector('${locator}')).color;
-    [Return]    ${color}
+Current Selected Value from Dropdown
+    [Arguments]    ${locator}   ${value}
+    ${selected_value}=    Get Selected List Label  ${locator}
+    Should Be Equal As Strings    ${selected_value}    ${value}
 
-Refresh The Page
-    Execute JavaScript    location.reload()
-    Log    Page refreshed
+Select Value from Dropdown for MultiSelector Dropdown
+    [Arguments]   ${locator}    ${value}    ${game_name}
+    Execute JavaScript      apex.item( "${locator}" ).setValue( "${value}", "${game_name}", true );
+
+Check if Location is Due in Few Months
+    [Arguments]    ${locator}
+    ${element}    Get WebElement    ${locator}   # Replace with your locator
+    Log    Element: ${element}
+    ${class_attribute}    Get Element Attribute    ${element}    class
+    Log    ${class_attribute}
+    ${due_class}       Should Be Equal As Strings    ${class_attribute}    hover-LocationItem active_location location_yellow
+    Log    The Location is due in Months and The Color is Displayed as Yellow
+
+Check if Location is Inactive
+    [Arguments]    ${locator}
+    ${element}    Get WebElement    ${locator}   # Replace with your locator
+    Log    Element: ${element}
+    ${class_attribute}    Get Element Attribute    ${element}    class
+    Log    ${class_attribute}
+    ${inactive_class}     Should Be Equal As Strings  ${class_attribute}    hover-LocationItem inactive_location
+    Log    The Location is Inactive and The Color is Displayed as Red
+
+Check if Location is Active
+    [Arguments]    ${locator}
+    ${element}    Get WebElement    ${locator}   # Replace with your locator
+    Log    Element: ${element}
+    ${class_attribute}    Get Element Attribute    ${element}    class
+    Log    ${class_attribute}
+    ${active_class}   Should Be Equal As Strings  ${class_attribute}  hover-LocationItem active_location
+    Log    The Location is Active and The Color is Displayed as Green

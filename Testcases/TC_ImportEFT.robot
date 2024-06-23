@@ -65,7 +65,5 @@ Download EFT Commission file in Import Log
 Upload EFT File
     [Tags]  Verify Upload EFT files IMPEFT_003
     Click on ImportEFT tab
-    #Click on the Choose File
-
-    Click on Upload the File
-    Sleep    5
+    Click on EFT Commission Radio Button in Import EFT
+    Upload The File

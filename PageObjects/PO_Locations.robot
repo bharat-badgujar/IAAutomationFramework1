@@ -53,6 +53,7 @@ ${linked_fg_name}            //*[@id="13906850711515232"]/tbody/tr[2]/td[1]/a
 
 ${active_loc}                //*[contains(text(),'DUMMY')][1]
 ${map_icon}                  //*[@id="locationInfo-map"]/a/img
+${loca_hdr}                  //*[@id="locationInfo-name"]
 
 ${machine_info}              //*[@id="machine_info_head_tab"]/a/span
 ${contract_info}             //*[text()="Contract Info"]
